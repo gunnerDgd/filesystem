@@ -1,3 +1,4 @@
+#pragma once
 #include <filesystem/interface/io_request.h>
 
 synapse_filesystem_io_request

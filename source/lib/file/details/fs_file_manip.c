@@ -70,4 +70,7 @@ size_t
             = SetFilePointerEx
                     (pFile->hnd_file, ptr_cursor,
                         &ptr_prev_cursor, FILE_CURRENT);
+    
+    return
+        ptr_prev_cursor.QuadPart;
 }

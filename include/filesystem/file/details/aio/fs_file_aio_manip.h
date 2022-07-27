@@ -1,3 +1,5 @@
+#pragma once
+
 #include <filesystem/file/details/fs_file_type.h>
 #include <filesystem/io_request/details/fs_ioreq_type.h>
 

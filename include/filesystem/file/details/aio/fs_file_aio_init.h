@@ -1,3 +1,4 @@
+#pragma once
 #include <filesystem/file/details/fs_file_type.h>
 
 __synapse_filesystem_file*

@@ -1,3 +1,4 @@
+#pragma once
 #include <filesystem/io_request/details/fs_ioreq_type.h>
 
 __synapse_filesystem_io_request*

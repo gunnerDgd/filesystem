@@ -1,3 +1,4 @@
+#pragma once
 #include <filesystem/file/details/fs_file_type.h>
 
 size_t

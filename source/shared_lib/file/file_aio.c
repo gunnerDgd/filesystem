@@ -36,7 +36,7 @@ synapse_filesystem_dll
 synapse_filesystem_dll
     synapse_file_aio
         synapse_initialize_file_aio_with_create_wchar
-            (const wcahr_t* pFileName)
+            (const wchar_t* pFileName)
 {
     return
         synapse_filesystem_file_aio_initialize_with_create_wchar

@@ -1,3 +1,4 @@
+#pragma once
 #include <filesystem/interface/file/file.h>
 
 #include <stdint.h>

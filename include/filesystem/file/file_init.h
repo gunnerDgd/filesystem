@@ -1,4 +1,8 @@
+#pragma once
 #include <filesystem/interface/file/file.h>
+
+#include <stdlib.h>
+#include <stdint.h>
 
 synapse_filesystem_file
     synapse_filesystem_file_initialize_with_open
