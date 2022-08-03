@@ -6,13 +6,14 @@ synapse_filesystem_io_request
         (void*  pIoMemory, 
          size_t pIoSize, 
          size_t pIoOffset,
-         void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request))
+         void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+         void  *pIoCompletionRoutineParam)
 {
     synapse_filesystem_opaque_init
         (synapse_filesystem_io_request, hnd_ioreq,
             __synapse_filesystem_io_request_initialize
                 (pIoMemory, pIoSize, pIoOffset,
-                    pIoCompletionRoutine));
+                    pIoCompletionRoutine, pIoCompletionRoutineParam));
     
     return
         hnd_ioreq;
@@ -24,12 +25,13 @@ synapse_filesystem_io_request
          void*                         pIoMemory, 
          size_t                        pIoSize, 
          size_t                        pIoOffset,
-         void(*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request))
+         void(*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+         void *pIoCompletionRoutineParam)
 {
     __synapse_filesystem_io_request_initialize_from_existing
         (synapse_filesystem_opaque_reference(pIoReq), 
             pIoMemory, pIoSize, pIoOffset,
-                pIoCompletionRoutine);
+                pIoCompletionRoutine, pIoCompletionRoutineParam);
     
     return
         pIoReq;

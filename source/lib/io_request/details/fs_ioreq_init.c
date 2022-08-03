@@ -6,7 +6,8 @@ __synapse_filesystem_io_request*
         (void*  pIoMemory, 
          size_t pIoSize, 
          size_t pIoOffset,
-         void (*pIoCompletionRoutine)(synapse_filesystem_io_request))
+         void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+         void  *pIoCompletionRoutineParam)
 {
     __synapse_filesystem_io_request*
         ptr_ioreq
@@ -26,6 +27,8 @@ __synapse_filesystem_io_request*
         = pIoSize;
     ptr_ioreq->ptr_ioreq_completion_routine
         = pIoCompletionRoutine;
+    ptr_ioreq->ptr_ioreq_param
+        = pIoCompletionRoutineParam;
     
     return
         ptr_ioreq;
@@ -37,7 +40,8 @@ __synapse_filesystem_io_request*
          void*                            pIoMemory, 
          size_t                           pIoSize, 
          size_t                           pIoOffset,
-         void(*pIoCompletionRoutine)(synapse_filesystem_io_request))
+         void(*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+         void *pIoCompletionRoutineParameter)
 {
     pIoReq->hnd_ioreq.Offset
         = pIoOffset & 0xFFFFFFFF;
@@ -46,6 +50,8 @@ __synapse_filesystem_io_request*
     
     pIoReq->ptr_ioreq_completion_routine
         = pIoCompletionRoutine;
+    pIoReq->ptr_ioreq_param
+        = pIoCompletionRoutineParameter;
     pIoReq->ptr_ioreq_memory
         = pIoMemory;
     pIoReq->ptr_ioreq_size

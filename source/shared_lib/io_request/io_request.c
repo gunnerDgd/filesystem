@@ -9,11 +9,13 @@ synapse_filesystem_dll
             (void*  pIoMemory, 
              size_t pIoSize, 
              size_t pIoOffset,
-             void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request))
+             void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+             void  *pIoCompletionRoutineParam)
 {
     return
         synapse_filesystem_io_request_initialize
-            (pIoMemory, pIoSize, pIoOffset, pIoCompletionRoutine);
+            (pIoMemory, pIoSize, pIoOffset, 
+                pIoCompletionRoutine, pIoCompletionRoutineParam);
 }
 
 synapse_filesystem_dll
@@ -23,12 +25,13 @@ synapse_filesystem_dll
              void*  pIoMemory, 
              size_t pIoSize, 
              size_t pIoOffset,
-             void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request))
+             void (*pIoCompletionRoutine)(size_t, synapse_filesystem_io_request, void*),
+             void  *pIoCompletionRoutineParam)
 {
     return
         synapse_filesystem_io_request_initialize_from_existing
             (pIoRequest, pIoMemory, pIoSize,
-                pIoOffset, pIoCompletionRoutine);
+                pIoOffset, pIoCompletionRoutine, pIoCompletionRoutineParam);
 }
 
 synapse_filesystem_dll

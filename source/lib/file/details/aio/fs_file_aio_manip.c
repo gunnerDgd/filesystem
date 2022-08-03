@@ -1,17 +1,16 @@
 #include <filesystem/file/details/aio/fs_file_aio_manip.h>
 
-void 
+void CALLBACK
     __synapse_filesystem_file_aio_completion_routine
         (uint32_t pErrorCode, 
          uint32_t pCompletionSize, 
          __synapse_filesystem_io_request* pIoRequest)
 {
     synapse_filesystem_opaque_init
-        (synapse_filesystem_io_request, hnd_ioreq,
-            pIoRequest);
+        (synapse_filesystem_io_request, hnd_ioreq, pIoRequest);
     
     pIoRequest->ptr_ioreq_completion_routine
-        (pCompletionSize, hnd_ioreq);
+        (pCompletionSize, hnd_ioreq, pIoRequest->ptr_ioreq_param);
 }
 
 void
@@ -19,12 +18,12 @@ void
         (__synapse_filesystem_file*       pFile, 
          __synapse_filesystem_io_request* pIoRequest)
 {
-    BOOL
-        res_rdfrom
-            = ReadFileEx
-                (pFile->hnd_file, pIoRequest->ptr_ioreq_memory, 
-                    pIoRequest->ptr_ioreq_size, pIoRequest, 
-                        &__synapse_filesystem_file_aio_completion_routine);
+    ReadFileEx
+        (pFile->hnd_file, pIoRequest->ptr_ioreq_memory, 
+            pIoRequest->ptr_ioreq_size, pIoRequest,
+                &__synapse_filesystem_file_aio_completion_routine);
+    
+    SleepEx(0, TRUE);
 }
 
 void
@@ -32,10 +31,10 @@ void
         (__synapse_filesystem_file*       pFile, 
          __synapse_filesystem_io_request* pIoRequest)
 {
-    BOOL
-        res_rdfrom
-            = WriteFileEx
-                (pFile->hnd_file, pIoRequest->ptr_ioreq_memory, 
-                    pIoRequest->ptr_ioreq_size, pIoRequest, 
-                        &__synapse_filesystem_file_aio_completion_routine);
+    WriteFileEx
+        (pFile->hnd_file, pIoRequest->ptr_ioreq_memory, 
+            pIoRequest->ptr_ioreq_size, pIoRequest, 
+                &__synapse_filesystem_file_aio_completion_routine);
+    
+    SleepEx(0, TRUE);
 }

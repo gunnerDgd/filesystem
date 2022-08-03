@@ -13,6 +13,8 @@ typedef struct
         ptr_ioreq_size  ;
     void
         (*ptr_ioreq_completion_routine)
-            (size_t, synapse_filesystem_io_request);
+            (size_t, synapse_filesystem_io_request, void*);
+    void*
+         ptr_ioreq_param;
 } __synapse_filesystem_io_request;
 
