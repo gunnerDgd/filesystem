@@ -38,9 +38,12 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     set_target_properties(
         synapse_filesystem_dll
         PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/synapse/lib/sysmod
-        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/synapse/sysmod
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/synapse/sysmod
+        ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/synapse/lib/sysmod
+        LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/synapse/sysmod
+        RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/synapse/sysmod
+        ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/synapse/lib/sysmod
+        LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/synapse/sysmod
+        RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/synapse/sysmod
     )
 
     target_compile_options(
